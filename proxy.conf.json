@@ -1,0 +1,4 @@
+{
+  "/department": { "target": "http://localhost:8060", "secure": false },
+  "/employee":   { "target": "http://localhost:8060", "secure": false }
+}

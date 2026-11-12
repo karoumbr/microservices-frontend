@@ -1,1 +1,231 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --surface-2: #f8f9fc;
+  --text: #1f2430;
+  --muted: #6b7280;
+  --border: #e3e7ef;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-soft: #eef0ff;
+  --danger: #dc2626;
+  --danger-soft: #fef2f2;
+  --radius: 12px;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 4px 12px rgba(16, 24, 40, .05);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1220;
+    --surface: #181c2e;
+    --surface-2: #1e2338;
+    --text: #e8eaf2;
+    --muted: #9aa1b5;
+    --border: #2b3150;
+    --accent: #818cf8;
+    --accent-hover: #6366f1;
+    --accent-soft: #232a52;
+    --danger: #f87171;
+    --danger-soft: #3b1d24;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 4px 12px rgba(0, 0, 0, .3);
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ---------- En-tête et navigation ---------- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: .75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.logo {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: .95rem;
+}
+nav { display: flex; gap: .35rem; flex-wrap: wrap; }
+nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 500;
+  padding: .45rem .85rem;
+  border-radius: 999px;
+  transition: background .15s, color .15s;
+}
+nav a:hover { background: var(--accent-soft); color: var(--accent); }
+nav a.active { background: var(--accent); color: #fff; }
+
+/* ---------- Contenu ---------- */
+main { max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
+h2 { margin: 0 0 1.25rem; font-size: 1.6rem; letter-spacing: -.01em; }
+h3 { margin: 0; font-size: 1.1rem; }
+small { color: var(--muted); font-weight: 400; }
+a { color: var(--accent); }
+
+/* ---------- Cartes ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.1rem 1.4rem;
+  margin-bottom: 1rem;
+  transition: transform .15s, border-color .15s;
+}
+.card:hover { transform: translateY(-1px); border-color: var(--accent); }
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: .75rem;
+}
+.card-header a { text-decoration: none; color: var(--text); }
+.card-header a:hover { color: var(--accent); }
+
+.badge {
+  display: inline-block;
+  padding: .15rem .65rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: .8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ---------- Tableaux ---------- */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.card .table-wrap { box-shadow: none; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: .65rem 1rem; }
+th {
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-weight: 600;
+}
+tbody tr { border-top: 1px solid var(--border); }
+tbody tr:hover { background: var(--accent-soft); }
+
+/* ---------- Barre d'outils / filtres ---------- */
+.toolbar {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- Formulaires ---------- */
+form {
+  display: grid;
+  gap: 1rem;
+  max-width: 460px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+label {
+  display: grid;
+  gap: .35rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+input, select {
+  width: 100%;
+  padding: .6rem .75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  font-weight: 400;
+  transition: border-color .15s, box-shadow .15s;
+}
+input:focus-visible, select:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+input[aria-invalid="true"], input.ng-invalid.ng-touched { border-color: var(--danger); }
+
+/* ---------- Boutons ---------- */
+button {
+  padding: .65rem 1.2rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s, transform .05s;
+}
+button:hover:not(:disabled) { background: var(--accent-hover); }
+button:active:not(:disabled) { transform: scale(.98); }
+button:disabled { opacity: .5; cursor: not-allowed; }
+button:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 2px; }
+
+/* ---------- Messages ---------- */
+p { margin: 0 0 .5rem; }
+.error {
+  color: var(--danger);
+  background: var(--danger-soft);
+  border-radius: 8px;
+  padding: .5rem .75rem;
+  font-size: .9rem;
+}
+.muted { color: var(--muted); }
+.loading { color: var(--muted); font-style: italic; }
+.back { display: inline-block; margin-bottom: 1rem; text-decoration: none; font-weight: 500; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  header { gap: .75rem; padding: .75rem 1rem; }
+  main { margin: 1rem auto; }
+  h2 { font-size: 1.3rem; }
+  th, td { padding: .5rem .6rem; }
+  form { max-width: 100%; padding: 1.1rem; }
+}
